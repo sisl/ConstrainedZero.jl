@@ -46,6 +46,7 @@ using BetaZero
 using LightDark
 
 pomdp = LightDarkPOMDP()
+pomdp.incorrect_r = 0 # ConstainedZero: For LightDark CC-POMDP
 up = BootstrapFilter(pomdp, 500)
 
 function BetaZero.input_representation(b::ParticleCollection{LightDarkState})
@@ -61,6 +62,7 @@ end
 
 solver = BetaZeroSolver(pomdp=pomdp,
                         updater=up,
+                        is_constrained=true, # <-- ConstrainedZero flag.
                         params=BetaZeroParameters(
                             n_iterations=50,
                             n_data_gen=50,
@@ -79,11 +81,16 @@ solver = BetaZeroSolver(pomdp=pomdp,
                         collect_metrics=true,
                         plot_incremental_data_gen=true)
 
+# ConstainedZero specific parameters
+solver.mcts_solver.Δ0 = 0.01
+solver.mcts_solver.η = 0.00001
+solver.mcts_solver.final_criterion = MaxZQNS(zq=1, zn=1)
+
+# Run ConstainedZero
 policy = solve(solver, pomdp)
 save_policy(policy, "policy.bson")
 save_solver(solver, "solver.bson")
 ```
-This example is also located at: [`scripts/readme_example.jl`](https://github.com/sisl/BetaZero.jl/blob/main/scripts/readme_example.jl)
 
 ## ConstrainedZero usage
 To run using ConstainedZero, turn on the `is_constrained` flag in the `BetaZeroSolver`:
