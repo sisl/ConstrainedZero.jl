@@ -99,7 +99,7 @@ Set the $\Delta_0$ chance constraint and the $\eta$ adaptive conformal inference
 ```julia
 solver.mcts_solver.Δ0 = 0.01
 solver.mcts_solver.η = 0.00001
-``
+```
 
 ConstrainedZero criteria:
 ```julia
