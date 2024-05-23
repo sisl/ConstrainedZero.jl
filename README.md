@@ -23,7 +23,7 @@ Belief-state planning algorithm for chance-constrained POMDPs (CC-POMDPs) using 
 ```
 
 ## Installation
-To install the ConstainedZero algorithm, use the #safety branch of [BetaZero.jl](https://github.com/sisl/BetaZero.jl/tree/safety). Run:
+To install the ConstainedZero algorithm, use the `#safety` branch of [BetaZero.jl](https://github.com/sisl/BetaZero.jl/tree/safety). To install the constrained BetaZero solver, run:
 
 ```julia
 using Pkg
