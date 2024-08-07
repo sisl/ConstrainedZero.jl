@@ -2,6 +2,8 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2405.00644-b31b1b.svg)](https://arxiv.org/abs/2405.00644)
 
+> [**See the BetaZero.jl package for the code.**](https://github.com/sisl/BetaZero.jl/tree/safety)
+
 Belief-state planning algorithm for chance-constrained POMDPs (CC-POMDPs) using learned approximations; integrated into the [POMDPs.jl](https://github.com/JuliaPOMDP/POMDPs.jl) ecosystem.
 
 <!-- ![light mode](/media/constrainedzero.svg#gh-light-mode-only) -->
